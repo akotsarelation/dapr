@@ -24,8 +24,8 @@ name: dapr-perf
 
 on:
   # Run at 23:44 every day
-  schedule:
-    - cron: "44 23 * * *"
+  # schedule:
+  #   - cron: "44 23 * * *"
   # Manual trigger
   workflow_dispatch:
     inputs:
@@ -250,7 +250,7 @@ jobs:
         id: setup-go
         uses: actions/setup-go@v6
         with:
-          go-version-file: 'go.mod'
+          go-version-file: "go.mod"
       - name: Login to Azure
         if: env.CHECKOUT_REPO != ''
         uses: azure/login@v1
@@ -410,7 +410,7 @@ jobs:
         id: setup-go
         uses: actions/setup-go@v6
         with:
-          go-version-file: 'go.mod'
+          go-version-file: "go.mod"
       - uses: azure/setup-kubectl@v3
         with:
           version: ${{ env.KUBECTLVER }}

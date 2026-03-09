@@ -18,17 +18,17 @@ name: dapr-test-sdk
 
 on:
   # Run every 12 hours on weekdays, and every 24 hours on weekends.
-  schedule:
-    - cron: "16 */11 * * 1-5"
-    - cron: "41 0 * * 0,6"
+  # schedule:
+  #   - cron: "16 */11 * * 1-5"
+  #   - cron: "41 0 * * 0,6"
   # Dispatch on external events
   repository_dispatch:
     types:
-    - test-sdk-all
-    - test-sdk-python
-    - test-sdk-java
-    - test-sdk-js
-    - test-sdk-go
+      - test-sdk-all
+      - test-sdk-python
+      - test-sdk-java
+      - test-sdk-js
+      - test-sdk-go
 env:
   GOOS: linux
   GOARCH: amd64
@@ -37,11 +37,11 @@ env:
 permissions: {}
 
 # Job(s) can be triggered with the following commands:
-  # /test-sdk-all
-  # /test-sdk-python
-  # /test-sdk-java
-  # /test-sdk-js
-  # /test-sdk-go
+# /test-sdk-all
+# /test-sdk-python
+# /test-sdk-java
+# /test-sdk-js
+# /test-sdk-go
 jobs:
   python-sdk:
     if: |
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write    
+      pull-requests: write
     steps:
       - name: Set up for scheduled test
         if: github.event_name != 'repository_dispatch'
@@ -234,7 +234,7 @@ jobs:
       - name: Set up OpenJDK ${{ env.JDK_VER }}
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
+          distribution: "adopt"
           java-version: ${{ env.JDK_VER }}
       - name: "Set up Go"
         id: setup-go
